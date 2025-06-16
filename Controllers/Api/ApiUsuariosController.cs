@@ -46,4 +46,18 @@ public class ApiUsuariosController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpPost]
+    public IActionResult Create(UsuarioRequest model)
+    {
+        
+        Usuario bd = new Usuario();
+        bd.Nombre = model.Nombre;
+        bd.Correo = model.Correo;
+        bd.Password = model.Password;
+
+        this.collection.InsertOne(bd);
+        
+        return Ok();
+    }
 }
